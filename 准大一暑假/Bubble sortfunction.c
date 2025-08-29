@@ -18,19 +18,30 @@ int main()
     for( i = 0; i < n; i++ )
         printf(" %d", a[i]);
     printf("\n");
+
         
     return 0;
 }
 
 /* 你的代码将被嵌在这里 */
+//25_8_29:问题在于该循环要重复几次，结果没想到是数学问题
 void sort( int a[], int n ){
-    int b[n];
+    int i=0;
 
-    for(int i=0;i<n;i++){
-        b[i]=0;
-    }
-    
-    for(int i=0;i<n;i++){
+    do{
+        int swap=0;
+        for(int i=0;i<n-1;i++){
+
+            if(a[i]>a[i+1]){
+            swap=a[i+1];
+            a[i+1]=a[i];
+            a[i]=swap;
+            }
+            
+        }
+        i++;
+    }while(i<n-1);
+/* {for(int i=0;i<n;i++){
         int change=0;
         int save=0;
         for(int j=0;j<n;j++){
@@ -75,7 +86,8 @@ void sort( int a[], int n ){
         b[i]=change;
         save=change;
 
-        for(int j=0;j<n;j++){ 
+        是一段有问题的想法，虽然上面的也有问题
+       for(int j=0;j<n;j++){ 
             for(int k=0;k<n;k++){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                 if(a[j]==a[k] && j<k && a[j]==save)
                     a[k]=999;
@@ -85,8 +97,7 @@ void sort( int a[], int n ){
             }
         }
     }
-    for(int i;i<n;i++){
-        a[i]=b[i];
-    }
+}*/
+
    
 }

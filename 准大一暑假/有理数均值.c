@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 //接口
-int maxdivisor(int a,int b);
+int maxdivisor(long long  a,long long  b);
 
 int main(void)
 {
@@ -57,18 +57,24 @@ int main(void)
         mothre = sum_den * b[i];
         kidse= sum_num * b[i] + a[i] * sum_den;
     }
+    //检测用
+    printf("%d\n",mothre);
+    printf("%d\n",kidse);
     
 
     //化简最后的分数，和例外情况的讨论
-    int kids=kidse/n;
-    int mothr=mothre/n;
+    long long  kidsq=kidse/maxdivisor(kidse,mothre);
+    long long  mothrq=mothre/maxdivisor(kidse,mothre);
+
+    long long   kids=kidsq;
+    long long mothr=mothrq*n;
 
     if(kids<0)
     {
         kids=-kids;
     if(maxdivisor(kids,mothr)!=0){
-        int kid =kids/(maxdivisor(kids,mothr));
-        int mthr =mothr/(maxdivisor(kids,mothr));
+        long  kid =kids/(maxdivisor(kids,mothr));
+        long mthr =mothr/(maxdivisor(kids,mothr));
         if(mthr==1){
             printf("-%d",kid);
         }
@@ -99,7 +105,7 @@ int main(void)
 }
 
 //最大公约数的函数
-int maxdivisor(int a,int b)
+int maxdivisor(long long  a,long long  b)
 {
     int ret=0;
     int i=1;
@@ -112,3 +118,4 @@ int maxdivisor(int a,int b)
     }
     return ret;
 }
+//mad，等会再看
